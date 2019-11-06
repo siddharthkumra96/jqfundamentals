@@ -13,15 +13,15 @@ class DynamicSelect{
   getData(e){
     let $option = $(e.currentTarget);
     let val = $option.val();
-  if(!this.cachedResponse){
-    $.get("/data/specials.json").done((res)=> {
-      this.cachedResponse=res;
-      this.updateTarget(res[val]);
-    });
-  }
-  else{
-    this.updateTarget(this.cachedResponse[val]);
-  }
+    if(!this.cachedResponse){
+      $.get("/data/specials.json").done((res)=> {
+        this.cachedResponse=res;
+        this.updateTarget(res[val]);
+      });
+    }
+    else{
+      this.updateTarget(this.cachedResponse[val]);
+    }
   }
   updateTarget(values){
     let html = "";
