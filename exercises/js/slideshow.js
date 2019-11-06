@@ -3,7 +3,7 @@ let $items = $("#slideshow li").hide();
 let counter = 1;
 let totalItems = $items.length;
 
-let $counterContainer = $("<div> of  " +totalItems+" </div>").appendTo("body");
+let $counterContainer = $("<div> of  " +totalItems+" </div>").insertAfter($slideshow);
 let $counter = $("<b>"+counter+"</b>").prependTo($counterContainer);
 
 let $nextButton = $("<button id='nextButton'>Next</button>").click(buttonHandler);
@@ -11,9 +11,10 @@ let $prevButton = $("<button id='prevButton'>Prev</button>").click(buttonHandler
 let $startStopButton = $("<button id='startStopButton'>Stop</button>").click(buttonHandler);
 let buttonPressed = false, $currentSlide, delayTimeout;
 
-$nextButton.insertAfter($("#slideshow"));
-$startStopButton.insertAfter($("#slideshow"));
-$prevButton.insertAfter($("#slideshow"));
+$nextButton.insertAfter($slideshow);
+$startStopButton.insertAfter($slideshow);
+$prevButton.insertAfter($slideshow);
+
 
 const delayInMs = 2000;
 
