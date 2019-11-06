@@ -1,0 +1,20 @@
+.stackContainer{
+  margin-top: 20px;
+}
+.stackEl{
+  width: 100px;
+  height: 20px;
+  background-color: lightgray;
+  text-align: center;
+  cursor: pointer;
+  border: 1px black solid;
+  border-radius: 2px;
+  margin-bottom: 2px;
+}
+.addButton{
+  float: right;
+  margin-right: 30px;
+}
+.mainContainer{
+  width: 500px;
+}
