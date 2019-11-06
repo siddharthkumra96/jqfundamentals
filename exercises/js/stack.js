@@ -2,10 +2,9 @@ class StackOfElements{
   constructor(){
     this.counter = 1;
     this.$mainContainer = $("<div/>", {"class": "mainContainer"});
-    this.$stackContainer = $("<div/>", {"class": "stackContainer", text: "Stack is empty!"}).on("click", "div.stackEl", this.deleteHandler.bind(this));
-    this.$stackElement = $("<div/>", {
-      "class":"stackEl"});
-    }
+    this.$stackContainer = $("<div/>", {"class": "stackContainer", text: "Stack is empty!"})
+      .on("click", "div.stackEl", this.deleteHandler.bind(this));
+    this.$stackElement = $("<div/>", {"class":"stackEl"});}
     display(){
       this.$addButton = $("<button/>", {text: "Add", "class":"addButton"}).on("click", this.addHandler.bind(this));
       this.$addButton.appendTo(this.$mainContainer);
