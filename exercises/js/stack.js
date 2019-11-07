@@ -3,7 +3,7 @@ class StackOfElements{
     this.counter = 1;
     this.$mainContainer = $("<div/>", {"class": "mainContainer"});
     this.$stackContainer = $("<div/>", {"class": "stackContainer", text: "Stack is empty!"})
-      .on("click", "div.stackEl", this.deleteHandler.bind(this));
+      .on("click", "div.stackEl", this.clickHandler.bind(this));
     this.$stackElement = $("<div/>", {"class":"stackEl"});}
     display(){
       this.$addButton = $("<button/>", {text: "Add", "class":"addButton"}).on("click", this.addHandler.bind(this));
@@ -19,7 +19,7 @@ class StackOfElements{
       $newStackElement.text(this.counter++);
       $newStackElement.appendTo(this.$stackContainer);
     }
-    deleteHandler(e){
+    clickHandler(e){
       let $targetElement = $(e.target);
       if(this.$stackContainer.children(":last").get(0) === e.target){
         $targetElement.remove();
