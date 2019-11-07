@@ -1,12 +1,13 @@
+/* jshint esversion: 6 */
 const defaultValues = {
   title: '',
   text: '',
   image:''
-}
+};
 class DynamicSelect {
   constructor(id) {
     this.$specials = $("#" + id);
-    this.cachedResponse;
+    this.cachedResponse = null;
     this.$target = $("<div/>");
     this.$specials.append(this.$target);
   }
@@ -19,7 +20,7 @@ class DynamicSelect {
     let $option = $(e.currentTarget);
     let val = $option.val();
     if (!val) {
-      this.updateTarget(defaultValues)
+      this.updateTarget(defaultValues);
     } else {
       if (!this.cachedResponse) {
         $.get("/data/specials.json").done(res => {
