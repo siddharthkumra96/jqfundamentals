@@ -14,7 +14,6 @@ class LoadBlogData{
   loadPostData(e){
     e.preventDefault();
     let $targetH3 = $(e.currentTarget);
-    
     let $container = $targetH3.data("container");
     let id  = "#" + $targetH3.find("a").attr("href").split("#")[1];
     $container.load("data/blog.html " + id);
