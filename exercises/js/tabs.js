@@ -29,5 +29,5 @@ class Tabs{
       $firstElementInList.addClass("current").data("module").show();
     }
   }
-  let tabbedModules = new Tabs("module");
-  tabbedModules.createTabs();
+let tabbedModules = new Tabs("module");
+tabbedModules.createTabs();
