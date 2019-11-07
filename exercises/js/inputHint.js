@@ -16,9 +16,12 @@ class InputHint{
     }
   }
   onBlur(){
-     if(!this.$input.val()){
+     if(!this.$input.val().trim()){
        this.$input.val(this.label_text); 
        this.$input.addClass("hint");
+      }
+      else{
+        this.$input.val(this.$input.val().trim());
       }
   }
 }
