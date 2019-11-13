@@ -1,12 +1,13 @@
+/* jshint esversion: 6 */
 const delayInMs = 2000;
 class Slideshow {
   constructor(id) {
-    this.$currentSlide;
-    this.delayTimeout;
-    this.$counter;
-    this.$nextButton;
-    this.$prevButton;
-    this.$startStopButton;
+    this.$currentSlide = null;
+    this.delayTimeout = null;
+    this.$counter = null;
+    this.$nextButton = null;
+    this.$prevButton = null;
+    this.$startStopButton = null;
     this.$slideshow = $("#" + id);
     this.$items = this.$slideshow.children("li");
     this.counter = 1;
@@ -80,7 +81,7 @@ class Slideshow {
   buttonHandler(e) {
     let button = e.currentTarget;
     this.buttonPressed = true;
-    if (!(button === this.$startStopButton.get(0))) {
+    if (button !== this.$startStopButton.get(0)) {
       if (button === this.$nextButton.get(0)) {
         this.counter += 1;
       } else if (button === this.$prevButton.get(0)) {
