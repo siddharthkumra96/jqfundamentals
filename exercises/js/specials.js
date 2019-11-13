@@ -1,10 +1,10 @@
 /* jshint esversion: 6 */
 const defaultValues = {
-  title: '',
-  text: '',
-  image:''
+  title: "",
+  text: "",
+  image: ""
 };
-class DynamicSelect {
+class AutoPopulate {
   constructor(id) {
     this.$specials = $("#" + id);
     this.cachedResponse = null;
@@ -17,30 +17,39 @@ class DynamicSelect {
     this.$specials.find(".buttons").remove();
   }
   getData(e) {
-    let $option = $(e.currentTarget);
-    let val = $option.val();
-    if (!val) {
+    let optionVal = $(e.currentTarget).val();
+    if (!this.achedResponse) {
+      $.get("/data/specials.json").done(res => {
+        this.setCachedReponse(res);
+        this.setTarget(optionVal);
+      });
+    } else {
+      this.setTarget(optionVal);
+    }
+  }
+  setCachedReponse(data) {
+    this.cachedResponse = data;
+  }
+  setTarget(optionVal) {
+    if (!optionVal) {
       this.updateTarget(defaultValues);
     } else {
-      if (!this.cachedResponse) {
-        $.get("/data/specials.json").done(res => {
-          this.cachedResponse = res;
-          this.updateTarget(res[val]);
-        });
-      } else {
-        this.updateTarget(this.cachedResponse[val]);
-      }
+      this.updateTarget(this.cachedResponse[optionVal]);
     }
   }
   updateTarget(values) {
-    let html = "";
-    let title = "<h3>" + values.title + "</h3>";
-    let text = "<p>" + values.text + "</p>";
-    let image = '<img src="' + values.image + '"/>';
-    html = title + text + image;
-    this.$target.html(html);
-    this.$target.css("color", values.color);
+    let title = $("<h3>", { text: values.title });
+    let text = $("<p>", { text: values.text });
+    let image = $("<img />", { src: values.image });
+    this.$target.empty();
+    this.$target
+      .append(title)
+      .append(text)
+      .append(image)
+      .css("color", values.color);
   }
 }
-var specials = new DynamicSelect("specials");
-specials.addListeners();
+$(function() {
+  var specials = new AutoPopulate("specials");
+  specials.addListeners();
+});
