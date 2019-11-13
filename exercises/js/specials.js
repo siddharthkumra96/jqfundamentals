@@ -18,7 +18,7 @@ class AutoPopulate {
   }
   getData(e) {
     let optionVal = $(e.currentTarget).val();
-    if (!this.achedResponse) {
+    if (!this.cachedResponse) {
       $.get("/data/specials.json").done(res => {
         this.setCachedReponse(res);
         this.setTarget(optionVal);
