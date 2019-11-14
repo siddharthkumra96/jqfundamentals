@@ -7,7 +7,7 @@ $(() => {
   };
   class AutoPopulate {
     constructor(id) {
-      this.$specials = $(`# ${id}`);
+      this.$specials = $(`#${id}`);
       this.cachedResponse = null;
       this.$target = $('<div/>');
       this.$specials.append(this.$target);
