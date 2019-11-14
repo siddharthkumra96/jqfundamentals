@@ -13,7 +13,6 @@ const q3 = $('div.module:last')
 // Q4
 const q4 = $('#specials select').append($('<option />', { value: 'Wednesday', text: 'Wednesday' }));
 // Q5
-const q5 = $('div.module:last').after(
-  $('<div />', { className: 'module' })
-    .append($("img[alt='fruit']").clone())
-);
+const $moduleContainer = $('<div />', { className: 'module' });
+$moduleContainer.append($('img:first').clone());
+$('div.module:last').after($moduleContainer);
